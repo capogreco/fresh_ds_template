@@ -1,9 +1,11 @@
 import { useSignal } from "@preact/signals";
 import { SynthSplash } from "../components/SynthSplash.tsx";
+import Synth from "../islands/Synth.tsx";
 
 export default function Home() {
-  const count = useSignal(3);
+  // const count = useSignal(3);
   return (
-    <SynthSplash />
+    <Synth enabled={false} />
+    // <SynthSplash />
   );
 }
