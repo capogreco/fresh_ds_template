@@ -1,18 +1,18 @@
-export function SynthSplash (){   
+export function SynthScreen (){   
    return (
       <div style="
+         background: deeppink;
          font: italic bolder 80px sans-serif;
+         color: turquoise;
+         display: flex;
          justify-content: center;
          align-items: center;
-         background: black;
          position: fixed;
-         display: flex;
-         height: 100vh;
          width: 100vw;
-         color: white;
+         height: 100vh;
          left: 0;
          top: 0;"
-      > → ENABLE </div>
+      ></div>
    );
  }
  
