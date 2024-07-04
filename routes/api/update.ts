@@ -7,9 +7,11 @@ export const handler: Handlers = {
       const program = await req.json ()
       const { ok, versionstamp } = await db.set ([ `program` ], program)
       if (!ok) return new Response (`Failed to save program`, { status: 500 })
+      program.versionstamp = versionstamp
       const bc = new BroadcastChannel (`program_channel`)
-      bc.postMessage ({ program, versionstamp })
-      setTimeout (() => bc.close (), 5)
+      await bc.postMessage ({ program, versionstamp })
+      bc.close ()
+      // setTimeout (() => bc.close (), 5)
 
       return Response.json (versionstamp)
    }
