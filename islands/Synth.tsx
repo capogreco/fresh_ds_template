@@ -2,16 +2,31 @@ import { useSignal } from "@preact/signals"
 import { useEffect } from "preact/hooks"
 import { SynthSplash } from "../components/SynthSplash.tsx"
 import { SynthScreen } from "../components/SynthScreen.tsx"
+import { Program } from "../shared/types.ts"
 
 let ctx: AudioContext
 
-export default function Synth (props: { enabled: boolean}) {
+const graph = {}
+const program = {
+   initialised: false,
+}
+
+export default function Synth (props: { 
+   enabled: boolean,
+   program: Program
+}) {
 
    const enabled = useSignal (props.enabled)
 
    useEffect (() => {
       ctx = new AudioContext()
       ctx.suspend ()
+
+      const es = new EventSource (`/api/listen`)
+      es.onmessage = e => {
+         const data = JSON.parse (e.data)
+         console.log (data)
+      }
    }, [])
 
    const enable = async () => {

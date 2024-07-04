@@ -3,7 +3,7 @@ export function SynthScreen (){
       <div style="
          background: deeppink;
          font: italic bolder 80px sans-serif;
-         color: turquoise;
+         color: white;
          display: flex;
          justify-content: center;
          align-items: center;

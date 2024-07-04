@@ -5,7 +5,6 @@ const submit = async (e: SubmitEvent) => {
    const form = e.target as HTMLFormElement
    const data = new FormData (form)
    const json = JSON.stringify(Object.fromEntries(data))
-   console.log (`submitting`, json)
 
    const res = await fetch (`/api/update`, {
       method: `POST`,
@@ -14,7 +13,6 @@ const submit = async (e: SubmitEvent) => {
       },
       body: json
    })
-   console.log (`response`, res)
 
 }
 
